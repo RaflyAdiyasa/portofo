@@ -7,11 +7,12 @@ export const profile = {
     "My focus is on designing and automating modern infrastructure and deployment workflows. I have hands-on experience working with Linux, Docker, Kubernetes, Jenkins, Git, GitOps, monitoring, and cloud technologies. I am particularly interested in improving system reliability, deployment efficiency, security, and operational visibility through automation and engineering best practices.",
   currentFocus:
     "Currently learning: Kubernetes Operators, Helm, GitOps with Argo CD, and Site Reliability Engineering practices.",
-  email: "@example.com",
+  email: "rafly271008@gmail.com",
   github: "https://github.com/RaflyAdiyasa",
   linkedin: "https://linkedin.com/in/rafly-adiyasa-putra-991b58269/",
-  resume: "/resume.pdf", // place in public folder
-  image: "/profile.png", // place in public folder
+  resume: "/resume.pdf", 
+  image: "/profile.png", 
+  image2: "/profile2.JPG", 
   socials: [
     { label: "GitHub", url: "https://github.com/RaflyAdiyasa", icon: "github" },
     { label: "LinkedIn", url: "linkedin.com/in/rafly-adiyasa-putra-991b58269/", icon: "linkedin" },

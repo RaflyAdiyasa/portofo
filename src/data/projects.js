@@ -1,5 +1,306 @@
 export const projects = [
   {
+    slug: "tickeria",
+    title: "Tickeria",
+    subtitle: "Event ticketing and event calendar platform for Yogyakarta",
+    description:
+      "Tickeria is a web-based ticketing and event calendar platform designed to help users discover events, purchase tickets, and manage their tickets digitally. The platform also provides organizer and admin functionality for managing events, tickets, transactions, and event attendance.",
+
+    category: "Full Stack / DevOps",
+
+    thumbnail: "/projects/tickeria/thumb.png",
+
+    technologies: [
+      "Go",
+      "Fiber",
+      "React",
+      "Vite",
+      "MySQL",
+      "GORM",
+      "JWT",
+      "Docker",
+      "Cloudinary",
+      "Swagger",
+      "Git",
+    ],
+
+    gallery: [
+      {
+        src: "/projects/tickeria/home.png",
+        alt: "Tickeria homepage",
+        caption: "Tickeria homepage for discovering available events",
+      },
+      {
+        src: "/projects/tickeria/calender.png",
+        alt: "Tickeria event calender",
+        caption:
+          "Event calender visualisation page containing events schedule",
+      },
+      {
+        src: "/projects/tickeria/event-detail.png",
+        alt: "Tickeria event detail page",
+        caption:
+          "Event detail page containing event information, schedule, location, and ticket availability",
+      },
+      {
+        src: "/projects/tickeria/event-detail2.png",
+        alt: "Tickeria event detail page 2",
+        caption:
+          "Event detail page containing event information, schedule, location, and ticket availability",
+      },
+
+      {
+        src: "/projects/tickeria/ticket.png",
+        alt: "Tickeria ticket page",
+        caption:
+          "Digital ticket containing information and QR code for event verification",
+      },
+      {
+        src: "/projects/tickeria/dashboard.png",
+        alt: "Tickeria dashboard",
+        caption:
+          "Dashboard for managing event and ticket-related information",
+      },
+      {
+        src: "/projects/tickeria/checkin.png",
+        alt: "Tickeria ticket check-in",
+        caption:
+          "QR code ticket verification and check-in process for event organizers",
+      },
+    ],
+
+    architecture: {
+      image: "/projects/tickeria/architecture.png",
+      description:
+        "Tickeria uses a web-based frontend and backend architecture. The frontend provides the user interface for authentication, event discovery, ticket purchasing, and ticket management. The backend API is developed using Golang and Fiber and acts as the main layer connecting the frontend with the MySQL database and external services. GORM is used as the ORM for database interaction, while JWT is used for authentication and authorization. Cloudinary is used for image and media storage.",
+    },
+
+    implementation: {
+      authentication: {
+        title: "Authentication & Authorization",
+        content:
+          "Implemented authentication functionality for registration and login. JWT is used to maintain authenticated sessions and control access to functionality based on user roles such as user, organizer, and admin.",
+        commands: [
+          "POST /api/auth/register",
+          "POST /api/auth/login",
+        ],
+      },
+
+      backend: {
+        title: "Backend API",
+        content:
+          "Developed the backend API using Golang and the Fiber framework. The backend handles request processing, validation, business logic, database interaction, and JSON responses. The backend follows a simple layered architecture with handlers, middleware, models, routes, configuration, and utility components.",
+        commands: [
+          "go mod download",
+          "go run main.go",
+        ],
+      },
+
+      database: {
+        title: "Database & ORM",
+        content:
+          "Designed and implemented the application database using MySQL. GORM is used as the Object Relational Mapping layer to represent database entities, relationships, primary keys, and foreign keys in Go models.",
+        commands: [
+          "mysql -u root -p",
+          "SHOW DATABASES;",
+        ],
+      },
+
+      eventManagement: {
+        title: "Event Management",
+        content:
+          "Implemented event management functionality for organizers and administrators. The system supports creating, updating, and deleting event information and managing event-related data.",
+        commands: [
+          "POST /api/events",
+          "GET /api/events",
+          "PUT /api/events/:id",
+          "DELETE /api/events/:id",
+        ],
+      },
+
+      ticketing: {
+        title: "Ticketing System",
+        content:
+          "Implemented the ticketing workflow including ticket selection, ordering, ticket availability, and purchase processing. The system also manages ticket stock to prevent invalid ticket availability.",
+        commands: [
+          "GET /api/events/:id/tickets",
+          "POST /api/orders",
+        ],
+      },
+
+      payment: {
+        title: "Payment Gateway Integration",
+        content:
+          "Integrated a payment gateway into the ticket purchasing workflow so users can process ticket transactions and receive the corresponding transaction status.",
+        commands: [
+          "POST /api/payment",
+          "GET /api/payment/status/:id",
+        ],
+      },
+
+      qrVerification: {
+        title: "QR Code Ticket Verification",
+        content:
+          "Implemented digital ticket verification using QR codes. Organizers can scan the QR code associated with a ticket and verify whether the ticket is valid before marking it as checked-in.",
+        commands: [
+          "QR Code Generation",
+          "QR Code Scan",
+          "Ticket Validation",
+        ],
+      },
+
+      mediaStorage: {
+        title: "Image & Media Storage",
+        content:
+          "Integrated Cloudinary for storing and managing images and media used by the application, including event-related assets.",
+        commands: [
+          "Upload image",
+          "Store Cloudinary URL",
+          "Retrieve media URL",
+        ],
+      },
+
+      apiDocumentation: {
+        title: "API Documentation",
+        content:
+          "Provided API documentation using Swagger to make backend endpoints easier to inspect, test, and integrate with the frontend.",
+        commands: [
+          "Swagger API Documentation",
+          "API Endpoint Testing",
+        ],
+      },
+
+      containerization: {
+        title: "Containerization",
+        content:
+          "Containerized the backend application using Docker to provide a consistent application runtime environment and simplify deployment.",
+        commands: [
+          "docker build -t tickeria-backend .",
+          "docker run tickeria-backend",
+        ],
+      },
+
+      cicd: {
+        title: "CI/CD",
+        content:
+          "Prepared CI/CD configuration using Cloud Build through the cloudbuild.yaml configuration file to support automated application build and delivery workflows.",
+        commands: [
+          "gcloud builds submit",
+          "cloudbuild.yaml",
+        ],
+      },
+
+      frontend: {
+        title: "Frontend Application",
+        content:
+          "Developed frontend functionality for user interaction with the Tickeria platform, including authentication, event discovery, event details, ticket purchasing, and ticket management.",
+        commands: [
+          "npm install",
+          "npm run dev",
+          "npm run build",
+        ],
+      },
+    },
+
+    challenges: [
+      {
+        title: "Designing the Application Database",
+        problem:
+          "The ticketing platform contains multiple entities and relationships such as users, organizers, events, event categories, tickets, and transactions.",
+        investigation:
+          "Analyzed application requirements and translated the required entities and relationships into an Entity Relationship Diagram.",
+        rootCause:
+          "The application requires structured relationships between different business entities to maintain consistent data.",
+        solution:
+          "Designed the ERD and implemented the resulting database structure using MySQL and GORM models.",
+        result:
+          "The application can manage its event and ticketing data using a structured relational database.",
+        lessonLearned:
+          "Database design should be considered together with application requirements and business relationships.",
+      },
+
+      {
+        title: "Authentication and Role Management",
+        problem:
+          "Different users require different access levels within the application.",
+        investigation:
+          "Identified the required roles and protected API functionality using authentication and authorization middleware.",
+        rootCause:
+          "User, organizer, and admin functionality must be separated to prevent unauthorized operations.",
+        solution:
+          "Implemented JWT-based authentication and middleware-based authorization.",
+        result:
+          "Protected API endpoints can distinguish authenticated users and their roles.",
+        lessonLearned:
+          "Authentication and authorization should be designed as part of the application architecture rather than added later.",
+      },
+
+      {
+        title: "Ticket Verification",
+        problem:
+          "Purchased tickets need to be verified efficiently when users arrive at an event.",
+        investigation:
+          "Designed a digital ticket workflow where each ticket contains a QR code that can be scanned by the organizer.",
+        rootCause:
+          "Manual ticket verification can be inefficient and difficult to manage during an event.",
+        solution:
+          "Implemented QR code-based ticket verification and check-in functionality.",
+        result:
+          "Organizers can verify tickets digitally during event check-in.",
+        lessonLearned:
+          "Digital verification can simplify event operations and reduce manual ticket checking.",
+      },
+
+      {
+        title: "Integration Between Frontend and Backend",
+        problem:
+          "The frontend requires consistent communication with multiple backend API endpoints.",
+        investigation:
+          "Tested API request and response flows between the React frontend and Golang backend.",
+        rootCause:
+          "Different application features depend on correctly structured API contracts.",
+        solution:
+          "Implemented REST API endpoints and documented them using Swagger to support frontend integration.",
+        result:
+          "Frontend features can communicate with the backend through documented API endpoints.",
+        lessonLearned:
+          "Clear API contracts make frontend and backend integration easier to develop and maintain.",
+      },
+    ],
+
+    metrics: [
+      {
+        value: "Go",
+        label: "Backend",
+      },
+      {
+        value: "React",
+        label: "Frontend",
+      },
+      {
+        value: "MySQL",
+        label: "Database",
+      },
+      {
+        value: "JWT",
+        label: "Authentication",
+      },
+      {
+        value: "Docker",
+        label: "Containerization",
+      },
+      {
+        value: "Swagger",
+        label: "API Documentation",
+      },
+    ],
+
+    github: "https://github.com/yourusername/tickeria",
+
+    demo: "",
+  },
+  
+  {
     slug: "assigngo",
     title: "AssignGO",
     subtitle: "Application platform with cloud infrastructure and automated CI/CD",
@@ -124,7 +425,7 @@ export const projects = [
       },
     ],
 
-    github: "https://github.com/yourusername/assigngo",
+    github: "https://github.com/RaflyAdiyasa/Assign_Go_Mail_Service",
     demo: "",
   },
 
@@ -286,7 +587,7 @@ export const projects = [
       },
     ],
 
-    github: "https://github.com/yourusername/helpdesk-ticketing-api",
+    github: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-Api",
     demo: "",
   },
 
@@ -316,31 +617,42 @@ export const projects = [
     gallery: [
       {
         src: "/projects/ztp/topology.png",
-        alt: "ZTP network topology",
-        caption: "Multi-vendor network topology simulated with GNS3",
+        alt: "ZTP network LAN topology",
+        caption: "Multi-vendor network LAN topology simulated with GNS3",
       },
       {
-        src: "/projects/ztp/dhcp.png",
+        src: "/projects/ztp/architecture.png",
+        alt: "ZTP network WAN topology",
+        caption: "Multi-vendor network WAN topology simulated with GNS3",
+      },
+      {
+        src: "/projects/ztp/dhcp-config.png",
         alt: "DHCP configuration",
         caption: "DHCP configuration for device provisioning",
       },
       {
         src: "/projects/ztp/arista.png",
         alt: "Arista device provisioning",
-        caption: "ZTP workflow for Arista EOS",
+        caption: "ZTP config for Arista EOS",
       },
       {
         src: "/projects/ztp/cumulus.png",
         alt: "Cumulus Linux provisioning",
-        caption: "ZTP workflow for Cumulus Linux",
+        caption: "ZTPconfig for Cumulus Linux",
+      },
+      {
+        src: "/projects/ztp/exos.png",
+        alt: "Exos provisioning",
+        caption: "ZTP config for Cumulus Linux",
       },
     ],
 
     architecture: {
-      image: "/projects/ztp/architecture.png",
-      description:
-        "The ZTP environment uses DHCP-based device identification and provisioning. Vendor-specific DHCP Vendor Class Identifier information is used to provide the appropriate bootstrapping configuration for different network operating systems. The environment was simulated using GNS3.",
-    },
+    image: "/projects/ztp/architecture.png",
+    description:
+      "The ZTP environment uses DHCP-based device identification and provisioning. Vendor-specific DHCP Vendor Class Identifier information is used to provide the appropriate bootstrapping configuration for different network operating systems. The environment was simulated using GNS3.",
+  
+      },
 
     implementation: {
       dhcp: {
@@ -407,7 +719,7 @@ export const projects = [
       },
     ],
 
-    github: "https://github.com/yourusername/ztp-multi-vendor",
+    github: "https://github.com/RaflyAdiyasa/",
     demo: "",
   },
 ];

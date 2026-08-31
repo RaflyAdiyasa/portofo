@@ -1,10 +1,10 @@
 export const education = [
   {
     id: 1,
-    institution: "[UNIVERSITY NAME]",
-    program: "Bachelor of Science in Computer Science",
-    startYear: "2018",
-    endYear: "2022",
-    description: "Relevant coursework: Distributed Systems, Networking, Databases, Operating Systems.",
+    institution: "Universitas Pembangunan Nasional Veteran Yogyakarta ",
+    program: "Informatics",
+    startYear: "2022",
+    endYear: "2026",
+    description: "Relevant coursework: Software Development, Cloud Computing, Networking, Databases, Operating Systems.",
   },
 ];

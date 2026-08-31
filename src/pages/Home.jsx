@@ -8,7 +8,7 @@ import Projects from '../sections/Projects';
 import Experience from '../sections/Experience';
 import Education from '../sections/Education';
 import Certifications from '../sections/Certifications';
-import Learning from '../sections/Learning';
+// import Learning from '../sections/Learning';
 
 export default function Home() {
   return (
@@ -23,7 +23,6 @@ export default function Home() {
         <Experience />
         <Education />
         <Certifications />
-        <Learning />
       </main>
       <Footer />
     </div>
