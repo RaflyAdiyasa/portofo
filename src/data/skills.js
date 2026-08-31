@@ -2,66 +2,90 @@ export const skills = [
   {
     category: "Cloud",
     items: [
-      { name: "AWS", icon: "Cloud" },
-      { name: "GCP", icon: "Cloud" },
+      { name: "AWS", icon: "aws" },
+      { name: "GCP", icon: "gcp" },
     ],
   },
+
   {
     category: "Container & Orchestration",
     items: [
-      { name: "Docker", icon: "Container" },
-      { name: "Kubernetes", icon: "Box" },
-      { name: "Helm", icon: "Anchor" },
+      { name: "Docker", icon: "docker" },
+      { name: "Kubernetes", icon: "kubernetes" },
+      { name: "Helm", icon: "helm" },
     ],
   },
+
   {
-    category: "CI/CD",
+    category: "CI/CD & GitOps",
     items: [
-      { name: "Jenkins", icon: "Workflow" },
-      { name: "GitHub Actions", icon: "GitBranch" },
+      { name: "Jenkins", icon: "jenkins" },
+      // { name: "GitHub Actions", icon: "githubactions" },
+      { name: "Argo CD", icon: "argocd" },
     ],
   },
+
   {
     category: "Observability",
     items: [
-      { name: "Prometheus", icon: "Activity" },
-      { name: "Grafana", icon: "BarChart" },
+      { name: "Prometheus", icon: "prometheus" },
+      { name: "Grafana", icon: "grafana" },
     ],
   },
+
   {
     category: "Infrastructure as Code",
     items: [
-      { name: "Terraform", icon: "FileCode" },
-      { name: "Ansible", icon: "Settings" },
+      { name: "Terraform", icon: "terraform" },
     ],
   },
+
   {
     category: "Security",
     items: [
-      { name: "Trivy", icon: "Shield" },
-      { name: "SonarQube", icon: "Scan" },
+      { name: "Trivy", icon: "trivy" },
+      // { name: "SonarQube", icon: "sonarqube" },
     ],
   },
+
   {
     category: "Programming",
     items: [
-      { name: "Python", icon: "Code" },
-      { name: "Go", icon: "Code" },
-      { name: "Bash", icon: "Terminal" },
+      { name: "Go", icon: "go" },
+      { name: "Python", icon: "python" },
+      { name: "Bash", icon: "bash" },
     ],
   },
+
   {
     category: "Database",
     items: [
-      { name: "PostgreSQL", icon: "Database" },
-      { name: "Redis", icon: "Database" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "Redis", icon: "redis" },
     ],
   },
+
   {
     category: "Linux / Systems",
     items: [
-      { name: "Linux", icon: "Server" },
-      { name: "Networking", icon: "Network" },
+      { name: "Linux", icon: "linux" },
+      { name: "Nginx", icon: "nginx" },
+      { name: "Networking", icon: "techstackicons" },
+      { name: "Traefik", icon: "go" },
+    ],
+  },
+
+    {
+    category: "Currently/Next Learning",
+    items: [
+      { name: "Ansible", icon: "techstackicons" },
+      { name: "Envoy Gateway", icon: "kubernetes" },
+      { name: "SonarQube", icon: "sonarqube" },
+      { name: "Gitlab", icon: "gitlab" },
+      { name: "Loki", icon: "techstackicons" },
+      { name: "Elastic Search", icon: "techstackicons" },
     ],
   },
 ];
+
