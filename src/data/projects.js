@@ -295,7 +295,34 @@ export const projects = [
       },
     ],
 
-    github: "https://github.com/yourusername/tickeria",
+    deployment: {
+      description: "Aplikasi di-deploy menggunakan Docker Compose dengan monitoring stack lengkap. Setup dapat dijalankan di server lokal maupun cloud VM.",
+      stack: [
+        "Kubernetes",
+        "ArgoCD",
+        "GitHub",
+        "Jenkins",
+      ],
+    links: [
+        {
+          type: "github",
+          label: "Backend Repo",
+          url: "https://github.com/RaflyAdiyasa/Ticketing-Backend",
+        },
+        {
+          type: "github",
+          label: "Frontend Repo",
+          url: "https://github.com/RaflyAdiyasa/Ticketing-Frontend",
+        },
+        {
+          type: "github",
+          label: "GitOps Repo",
+          url: "https://github.com/RaflyAdiyasa/tickeria-gitops",
+        },
+      ],
+    },
+
+    github: "https://github.com/RaflyAdiyasa/tickeria-gitops",
 
     demo: "",
   },
@@ -586,6 +613,37 @@ export const projects = [
         label: "Visualization",
       },
     ],
+
+    links: [
+      {
+        type: "github",
+        label: "Source Code",
+        url: "https://github.com/yourusername/helpdesk-ticketing-api",
+      },
+      {
+        type: "docker",
+        label: "Docker Hub",
+        url: "https://hub.docker.com/r/yourusername/helpdesk-ticketing-api",
+      },
+    ],
+
+    // NEW: Deployment section
+    deployment: {
+      description: "Aplikasi di-deploy menggunakan Docker Compose dengan monitoring stack lengkap. Setup dapat dijalankan di server lokal maupun cloud VM.",
+      stack: [
+        "Docker",
+        "Docker Compose",
+        "Prometheus",
+        "Grafana",
+      ],
+      links: [
+        {
+          type: "github",
+          label: "Deployment Config",
+          url: "https://github.com/yourusername/helpdesk-ticketing-api/tree/main/deploy",
+        },
+      ],
+    },
 
     github: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-Api",
     demo: "",
