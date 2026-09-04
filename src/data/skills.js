@@ -21,6 +21,7 @@ export const skills = [
     items: [
       { name: "Jenkins", icon: "jenkins" },
       { name: "GitHub", icon: "github" },
+      { name: "Git", icon: "git" },
       { name: "Argo CD", icon: "argocd" },
     ],
   },
@@ -54,6 +55,7 @@ export const skills = [
       { name: "Go", icon: "go" },
       { name: "Python", icon: "python" },
       { name: "Bash", icon: "bash" },
+      { name: "Groovy", icon: "techstackicons" },
     ],
   },
 

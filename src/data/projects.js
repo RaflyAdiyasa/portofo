@@ -314,6 +314,11 @@ export const projects = [
           label: "GitOps Repo",
           url: "https://github.com/RaflyAdiyasa/tickeria-gitops",
         },
+        {
+          type: "github",
+          label: "Jenkins Shared Library",
+          url: "https://github.com/RaflyAdiyasa/shared-library",
+        },
     ],
 
     deployment: {
@@ -353,6 +358,11 @@ export const projects = [
           type: "github",
           label: "GitOps Repo",
           url: "https://github.com/RaflyAdiyasa/tickeria-gitops",
+        },
+        {
+          type: "github",
+          label: "Jenkins Shared Library",
+          url: "https://github.com/RaflyAdiyasa/shared-library",
         },
       ],
     },
@@ -750,6 +760,207 @@ export const projects = [
     demo: "",
   },
 
+
+  {
+    slug: "Simple Go - Shrd Lib Pipeline Kube Argo Webhook",
+    title: "Simple Go - Shrd Lib Pipeline Kube Argo Webhook",
+    subtitle:
+      "Pipeline CICD Shared Library Jenkin , from merge webhook to deploy Kubernetes ArgoCD",
+  
+    description:
+  "A personal project focused on exploring Jenkins CI/CD pipelines using Groovy and Jenkins Shared Libraries. The pipeline is integrated with GitHub Webhooks and is automatically triggered when a Pull Request is merged into a designated deployment branch. After a successful build and container image push, Jenkins updates the image reference in the GitOps repository. Argo CD then detects the Git change, synchronizes the desired state, and deploys the updated application to the Kubernetes cluster.",
+
+
+    category: "Kubernetes/ArgoCD",
+
+    thumbnail: "/projects/simplego/thumb.png",
+
+    technologies: [
+      "Jenkins",
+      "Jenkins Shared Library",
+      "Kubernetes",
+      "ArgoCD",
+      "GitOps",
+      "GitHub",
+      "Envoy Gateway",
+      "Groovy",
+    ],
+
+    gallery: [
+      {
+        src: "/projects/simplego/argocd1.png",
+        alt: "argocd ui ",
+        caption: "List application ",
+      },
+      {
+        src: "/projects/simplego/argocd2.png",
+        alt: "Argocd Ui",
+        caption: "Aplication Detail",
+      },
+      {
+        src: "/projects/simplego/Jenkins1.png",
+        alt: "Jenkins",
+        caption: "Run Pipeline",
+      },
+      {
+        src: "/projects/simplego/pipeline.png",
+        alt: "Jenkins",
+        caption: "Pipeline using shared lib",
+      },
+            {
+        src: "/projects/simplego/LogPipeline.png",
+        alt: "Jenkins",
+        caption: "Console Pipeline",
+      },
+      {
+        src: "/projects/simplego/testEnvoy.png",
+        alt: "Jenkins",
+        caption: "test Envoy gateway acces pods",
+      },
+      // Add more gallery items if needed
+    ],
+
+    architecture: {
+      image: "/projects/project-name/architecture.png",
+      description:
+        "Just Simple Golang Api app",
+    },
+
+    implementation: {
+      feature1: {
+        title: "Feature or Implementation 1",
+        content:
+          "Description of the implementation, configuration, or technical approach used.",
+        commands: [
+          "example command",
+          "another example command",
+        ],
+      },
+
+      feature2: {
+        title: "Feature or Implementation 2",
+        content:
+          "Description of another important implementation or technical component.",
+        commands: [
+          "example command",
+        ],
+      },
+
+      feature3: {
+        title: "Feature or Implementation 3",
+        content:
+          "Description of another implementation, workflow, or technical component.",
+        commands: [
+          "example command",
+        ],
+      },
+
+      // Add more implementation sections if needed
+    },
+
+    challenges: [
+      {
+        title: "Challenge Title",
+        problem:
+          "Description of the technical problem or challenge encountered.",
+        investigation:
+          "Steps taken to investigate and understand the problem.",
+        rootCause:
+          "Identified root cause of the problem.",
+        solution:
+          "Solution or approach used to resolve the problem.",
+        result:
+          "Outcome after implementing the solution.",
+        lessonLearned:
+          "Key technical lesson or insight gained from the challenge.",
+      },
+
+      // Add more challenges if needed
+    ],
+
+    metrics: [
+      {
+        value: "X",
+        label: "Metric or Highlight",
+      },
+      {
+        value: "X",
+        label: "Metric or Highlight",
+      },
+      {
+        value: "Technology",
+        label: "Technical Highlight",
+      },
+
+      // Add more metrics if needed
+    ],
+
+      links: [
+        {
+          type: "github",
+          label: "Backend Repo",
+          url: "https://github.com/RaflyAdiyasa/backend-go",
+        },
+        {
+          type: "github",
+          label: "GitOps Repo",
+          url: "https://github.com/RaflyAdiyasa/gitops",
+        },
+        {
+          type: "github",
+          label: "Jenkins Shared Library",
+          url: "https://github.com/RaflyAdiyasa/shared-library",
+        },
+    ],
+
+    deployment: {
+      description: "The application is deployed on a Kubernetes cluster using Kind, following GitOps principles with Argo CD. Deployment and infrastructure configurations are managed declaratively through a GitHub repository, covering three deployments (frontend, backend, and MySQL database), services, persistent storage, horizontal pod autoscaling, and network policies for controlling communication between workloads.",
+      stack: [
+        "Kubernetes",
+        "ArgoCD",
+        "GitHub",
+        "Jenkins",
+      ],
+
+    images: [
+      {
+        src: "/projects/simplego/argocd1.png",
+        alt: "argocd dashboard",
+        caption: "ArgoCD Aplication List",
+      },
+      {
+        src: "/projects/simplego/argocd2.png",
+        alt: "ArgoCD application sync status",
+        caption: "ArgoCD showing successful application synchronization",
+      },
+    ],
+
+    links: [
+        {
+          type: "github",
+          label: "Backend Repo",
+          url: "https://github.com/RaflyAdiyasa/backend-go",
+        },
+        {
+          type: "github",
+          label: "GitOps Repo",
+          url: "https://github.com/RaflyAdiyasa/gitops",
+        },
+        {
+          type: "github",
+          label: "Jenkins Shared Library",
+          url: "https://github.com/RaflyAdiyasa/shared-library",
+        },
+      ],
+    },
+
+
+    github: "https://github.com/RaflyAdiyasa/",
+    demo: "",
+  },
+
+
+  
   {
     slug: "ztp-multi-vendor-network-provisioning",
     title: "ZTP Multi-Vendor Network Provisioning",
