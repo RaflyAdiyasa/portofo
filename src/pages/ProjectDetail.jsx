@@ -2,13 +2,13 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { projects } from '../data/projects';
 import { profile } from '../data/profile';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaLink } from 'react-icons/fa';
 import Button from '../components/common/Button';
 import ProjectGallery from '../components/projects/ProjectGallery';
 import ProjectTechStack from '../components/projects/ProjectTechStack';
 import ProjectArchitecture from '../components/projects/ProjectArchitecture';
 // import ProjectImplementation from '../components/projects/ProjectImplementation';
-import ProjectChallenges from '../components/projects/ProjectChallenges';
+// import ProjectChallenges from '../components/projects/ProjectChallenges';
 // import ProjectMetrics from '../components/projects/ProjectMetrics';
 import ProjectLinks from '../components/projects/ProjectLinks';
 import ProjectDeployment from '../components/projects/ProjectDeployment';
@@ -67,7 +67,7 @@ export default function ProjectDetail() {
           <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
             {project.subtitle}
           </p>
-          <div className="mt-4">
+          <div className="mt-6">
             <ProjectLinks project={project} />
           </div>
         </header>
@@ -97,26 +97,30 @@ export default function ProjectDetail() {
           <ProjectImplementation implementation={project.implementation} />
         )} */}
 
-        {/* NEW: Deployment Section */}
         {project.deployment && (
           <ProjectDeployment deployment={project.deployment} />
         )}
 
-        {project.challenges && project.challenges.length > 0 && (
+        {/* {project.challenges && project.challenges.length > 0 && (
           <ProjectChallenges challenges={project.challenges} />
-        )}
+        )} */}
 
         {/* {project.metrics && project.metrics.length > 0 && (
           <ProjectMetrics metrics={project.metrics} />
         )} */}
 
-        {/* Project Links at bottom */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Project Links
-          </h2>
-          <ProjectLinks project={project} />
-        </div>
+        {/* Project Links Section at bottom */}
+        {project.links && project.links.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <FaLink className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              Project Links
+            </h2>
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
+              <ProjectLinks project={project} />
+            </div>
+          </section>
+        )}
 
         {relatedProjects.length > 0 && (
           <section className="mt-16">

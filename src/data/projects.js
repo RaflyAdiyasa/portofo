@@ -2,7 +2,7 @@ export const projects = [
   {
     slug: "tickeria",
     title: "Tickeria",
-    subtitle: "Event ticketing and event calendar platform for Yogyakarta",
+    subtitle: "Event ticketing and event calendar platform for Yogyakarta City",
     description:
       "Tickeria is a web-based ticketing and event calendar platform designed to help users discover events, purchase tickets, and manage their tickets digitally. The platform also provides organizer and admin functionality for managing events, tickets, transactions, and event attendance.",
 
@@ -22,6 +22,9 @@ export const projects = [
       "Cloudinary",
       "Swagger",
       "Git",
+      "Kubernetes",
+      "ArgoCD",
+
     ],
 
     gallery: [
@@ -295,14 +298,46 @@ export const projects = [
       },
     ],
 
+      links: [
+        {
+          type: "github",
+          label: "Backend Repo",
+          url: "https://github.com/RaflyAdiyasa/Ticketing-Backend",
+        },
+        {
+          type: "github",
+          label: "Frontend Repo",
+          url: "https://github.com/RaflyAdiyasa/Ticketing-Frontend",
+        },
+        {
+          type: "github",
+          label: "GitOps Repo",
+          url: "https://github.com/RaflyAdiyasa/tickeria-gitops",
+        },
+    ],
+
     deployment: {
-      description: "Aplikasi di-deploy menggunakan Docker Compose dengan monitoring stack lengkap. Setup dapat dijalankan di server lokal maupun cloud VM.",
+      description: "The application is deployed on a Kubernetes cluster using Kind, following GitOps principles with Argo CD. Deployment and infrastructure configurations are managed declaratively through a GitHub repository, covering three deployments (frontend, backend, and MySQL database), services, persistent storage, horizontal pod autoscaling, and network policies for controlling communication between workloads.",
       stack: [
         "Kubernetes",
         "ArgoCD",
         "GitHub",
         "Jenkins",
       ],
+
+    images: [
+      {
+        src: "/projects/tickeria/deployment-1.png",
+        alt: "Kubernetes deployment dashboard",
+        caption: "Kubernetes cluster showing Tickeria pods running",
+      },
+      {
+        src: "/projects/tickeria/deployment-2.png",
+        alt: "ArgoCD application sync status",
+        caption: "ArgoCD showing successful application synchronization",
+      },
+    ],
+
     links: [
         {
           type: "github",
@@ -452,6 +487,72 @@ export const projects = [
       },
     ],
 
+         links: [
+        {
+          type: "github",
+          label: "Backend Repo 1",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_Mail_Service",
+        },
+        {
+          type: "github",
+          label: "Backend Repo 2",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_User_Service",
+        },
+        {
+          type: "github",
+          label: "Frontend Repo ",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_Fe",
+        },
+    ],
+
+    deployment: {
+      description: `The application is deployed using a CI/CD pipeline on Google Cloud, with GitHub as the source code repository. Source code changes trigger an automated build process using Google Cloud Build, which builds the application into a Docker container image and pushes it to Google Artifact Registry.
+
+    The containerized application is then deployed to Google Cloud Run and Google App Engine, leveraging serverless infrastructure to run the application without managing underlying servers. This setup provides an automated deployment workflow, containerized application delivery, and scalable serverless infrastructure.`,
+      stack: [
+        "GCP",
+        "Docker",
+        "GitHub",
+        "Cloud Build",
+        "Cloud Run",
+        "App Engine",
+        "Artifact Registry",
+      ],
+
+    images: [
+      // {
+      //   src: "/projects/assigngo/deployment-1.png",
+      //   alt: "Kubernetes deployment dashboard",
+      //   caption: "Kubernetes cluster showing Tickeria pods running",
+      // },
+      // {
+      //   src: "/projects/assigngo/deployment-2.png",
+      //   alt: "ArgoCD application sync status",
+      //   caption: "ArgoCD showing successful application synchronization",
+      // },
+    ],
+
+    links: [
+        {
+          type: "github",
+          label: "Backend Repo 1",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_Mail_Service",
+        },
+        {
+          type: "github",
+          label: "Backend Repo 2",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_User_Service",
+        },
+        {
+          type: "github",
+          label: "Frontend Repo ",
+          url: "https://github.com/RaflyAdiyasa/Assign_Go_Fe",
+        },
+        
+      ],
+    },
+
+
     github: "https://github.com/RaflyAdiyasa/Assign_Go_Mail_Service",
     demo: "",
   },
@@ -461,7 +562,7 @@ export const projects = [
     title: "Helpdesk Ticketing API",
     subtitle: "Containerized backend API with monitoring and health checks",
     description:
-      "A helpdesk ticketing backend API built with Go and Fiber, using MySQL, Redis, and MinIO, with containerization and application observability using Prometheus and Grafana.",
+      "A personal project built to explore and gain hands-on experience with various backend, infrastructure, and DevOps technologies. The project consists of a helpdesk ticketing backend API developed with Go and Fiber, integrated with MySQL, Redis, and MinIO for data persistence, caching, and object storage. It is containerized using Docker and equipped with application observability using Prometheus and Grafana.",
     category: "Backend / DevOps",
 
     thumbnail: "/projects/helpdesk-ticketing/thumb.png",
@@ -618,12 +719,12 @@ export const projects = [
       {
         type: "github",
         label: "Source Code",
-        url: "https://github.com/yourusername/helpdesk-ticketing-api",
+        url: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-API",
       },
       {
         type: "docker",
         label: "Docker Hub",
-        url: "https://hub.docker.com/r/yourusername/helpdesk-ticketing-api",
+        url: "https://hub.docker.com/repositories/huan271",
       },
     ],
 
@@ -639,8 +740,8 @@ export const projects = [
       links: [
         {
           type: "github",
-          label: "Deployment Config",
-          url: "https://github.com/yourusername/helpdesk-ticketing-api/tree/main/deploy",
+          label: "Docker Compose",
+          url: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-API",
         },
       ],
     },

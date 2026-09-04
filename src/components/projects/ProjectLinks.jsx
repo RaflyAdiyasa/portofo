@@ -1,5 +1,18 @@
 import Button from '../common/Button';
-import { FaGithub, FaExternalLinkAlt, FaBook, FaDocker, FaFileAlt, FaPlay, FaGlobe } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaExternalLinkAlt, 
+  FaBook, 
+  FaDocker, 
+  FaFileAlt, 
+  FaPlay, 
+  FaGlobe,
+  FaCode,
+  FaServer,
+  FaDatabase,
+  FaBox,
+  FaRocket
+} from 'react-icons/fa';
 
 const linkTypeConfig = {
   github: {
@@ -37,9 +50,29 @@ const linkTypeConfig = {
     variant: 'outline',
     defaultLabel: 'Website',
   },
+  backend: {
+    icon: FaServer,
+    variant: 'outline',
+    defaultLabel: 'Backend',
+  },
+  frontend: {
+    icon: FaCode,
+    variant: 'outline',
+    defaultLabel: 'Frontend',
+  },
+  database: {
+    icon: FaDatabase,
+    variant: 'outline',
+    defaultLabel: 'Database',
+  },
+  gitops: {
+    icon: FaRocket,
+    variant: 'outline',
+    defaultLabel: 'GitOps',
+  },
 };
 
-export default function ProjectLinks({ project, className = "" }) {
+export default function ProjectLinks({ project, className = "", showLabel = true }) {
   // Use links array if available, otherwise fallback to github/demo
   const links = project.links || [
     ...(project.github ? [{ type: 'github', url: project.github }] : []),
@@ -62,9 +95,10 @@ export default function ProjectLinks({ project, className = "" }) {
             variant={config.variant}
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
             <IconComponent className="h-4 w-4" />
-            {label}
+            {showLabel && label}
           </Button>
         );
       })}
