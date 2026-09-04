@@ -20,7 +20,7 @@ export const skills = [
     category: "CI/CD & GitOps",
     items: [
       { name: "Jenkins", icon: "jenkins" },
-      // { name: "GitHub Actions", icon: "githubactions" },
+      { name: "GitHub", icon: "github" },
       { name: "Argo CD", icon: "argocd" },
     ],
   },

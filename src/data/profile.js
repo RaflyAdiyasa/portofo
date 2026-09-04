@@ -1,6 +1,6 @@
 export const profile = {
   name: "Rafly Adiyasa Putra",
-  role: "DevOps / SRE Engineer",
+  role: "DevOps Engineer | SRE ",
   intro:
     "I am an Informatics graduate with a strong interest in DevOps, Site Reliability Engineering, cloud infrastructure, and automation. I enjoy building reliable, scalable, and maintainable systems through containerization, CI/CD, Kubernetes, Infrastructure as Code, and observability.",
   description:
