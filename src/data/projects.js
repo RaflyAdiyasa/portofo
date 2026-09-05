@@ -732,6 +732,11 @@ export const projects = [
         url: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-API",
       },
       {
+        type: "github",
+        label: "Gitops Repo",
+        url: "https://github.com/RaflyAdiyasa/cocoa-gitops",
+      },
+      {
         type: "docker",
         label: "Docker Hub",
         url: "https://hub.docker.com/repositories/huan271",
@@ -740,12 +745,15 @@ export const projects = [
 
     // NEW: Deployment section
     deployment: {
-      description: "Aplikasi di-deploy menggunakan Docker Compose dengan monitoring stack lengkap. Setup dapat dijalankan di server lokal maupun cloud VM.",
+      description: "Supports easy deployment using Docker Compose and Kubernetes through Argo CD and a GitOps workflow. The Kubernetes architecture includes MySQL and Redis StatefulSets with headless Services, as well as MinIO and the API deployed as Deployments with dedicated Services. Each stateful component is configured with persistent storage to ensure data durability across pod restarts and rescheduling.",
       stack: [
         "Docker",
         "Docker Compose",
         "Prometheus",
         "Grafana",
+        "Kubernetes",
+        "ArgoCd",
+        "GitHub",
       ],
       links: [
         {
@@ -753,6 +761,11 @@ export const projects = [
           label: "Docker Compose",
           url: "https://github.com/RaflyAdiyasa/Helpdesk-Ticketing-API",
         },
+         {
+        type: "github",
+        label: "Gitops Repo",
+        url: "https://github.com/RaflyAdiyasa/cocoa-gitops",
+      },
       ],
     },
 
