@@ -222,21 +222,43 @@ export const projects = [
           "Database design should be considered together with application requirements and business relationships.",
       },
 
-      {
-        title: "Authentication and Role Management",
-        problem:
-          "Different users require different access levels within the application.",
-        investigation:
-          "Identified the required roles and protected API functionality using authentication and authorization middleware.",
-        rootCause:
-          "User, organizer, and admin functionality must be separated to prevent unauthorized operations.",
-        solution:
-          "Implemented JWT-based authentication and middleware-based authorization.",
-        result:
-          "Protected API endpoints can distinguish authenticated users and their roles.",
-        lessonLearned:
-          "Authentication and authorization should be designed as part of the application architecture rather than added later.",
-      },
+{
+    title: "Adapting the system to evolving requirements",
+
+    problem:
+      "Tickeria was developed using an Agile SDLC with two-week sprints. At the end of each sprint, the team presented the application to the client, represented by a mentor, and received frequent feedback. Some requirements were minor UI changes, while others introduced new features or required significant changes to the existing system architecture.",
+
+    investigation:
+      "Evaluated how each new requirement affected the existing architecture, application flow, database structure, API contracts, and user experience. The team also identified potential edge cases and dependencies before implementing changes.",
+
+    solution:
+      "Continuously refined the system design and application architecture based on sprint feedback, while considering extensibility, edge cases, data flow, and the impact of changes across frontend, backend, and infrastructure components.",
+
+    result:
+      "The team became more capable of handling changing requirements without treating every request as an isolated feature. Changes were evaluated based on their impact on the overall system rather than only on the immediate implementation.",
+
+    lessonLearned:
+      "Learned the importance of anticipating edge cases and understanding the system as a whole before implementing changes. The project strengthened our understanding of system analysis, system design, architecture, API and data flow, and the importance of building software that can adapt to evolving requirements."
+  },
+
+  {
+    title: "Integrating a real payment gateway",
+
+    problem:
+      "The Tickeria mini challenge required the application to use a real payment gateway instead of a simulated payment flow, introducing additional requirements around payment processing, transaction status, security, and asynchronous communication.",
+
+    investigation:
+      "Studied the Midtrans integration flow, including payment creation, transaction status handling, webhook notifications, API integration, and the interaction between the payment gateway and the backend.",
+
+    solution:
+      "Integrated Midtrans as the payment gateway and implemented backend handling for payment transactions and webhook notifications. The payment flow was designed to handle asynchronous payment status updates and unexpected cases rather than relying only on the response from the initial payment request.",
+
+    result:
+      "Tickeria was able to process payments through a real payment gateway and receive transaction status updates through webhook callbacks, providing a more realistic end-to-end payment flow.",
+
+    lessonLearned:
+      "Learned how real-world payment integrations differ from simple request-response APIs, particularly the importance of webhooks, asynchronous processing, transaction state management, security, and robust handling of edge cases such as duplicate or unexpected notifications."
+  },
 
       {
         title: "Ticket Verification",
@@ -254,21 +276,6 @@ export const projects = [
           "Digital verification can simplify event operations and reduce manual ticket checking.",
       },
 
-      {
-        title: "Integration Between Frontend and Backend",
-        problem:
-          "The frontend requires consistent communication with multiple backend API endpoints.",
-        investigation:
-          "Tested API request and response flows between the React frontend and Golang backend.",
-        rootCause:
-          "Different application features depend on correctly structured API contracts.",
-        solution:
-          "Implemented REST API endpoints and documented them using Swagger to support frontend integration.",
-        result:
-          "Frontend features can communicate with the backend through documented API endpoints.",
-        lessonLearned:
-          "Clear API contracts make frontend and backend integration easier to develop and maintain.",
-      },
     ],
 
     metrics: [
@@ -373,6 +380,186 @@ export const projects = [
   },
   
   {
+    slug: "tickeria-helm-chart",
+    title: "Tickeria Helm Chart",
+    subtitle:
+      "Reusable Helm Chart for deploying Tickeria and its MySQL dependency on Kubernetes",
+
+    description:
+      "A Helm-based deployment project for packaging the Tickeria application into a reusable Kubernetes chart. The chart manages the frontend and backend workloads while using the Bitnami MySQL Helm Chart as a dependency for the database layer. It demonstrates Helm templating, values-driven configuration, Kubernetes Secrets, persistent storage, StatefulSets, service discovery, and chart validation.",
+
+    category: "DevOps / Kubernetes",
+
+    thumbnail: "/projects/tickeria-helm-chart/thumb.png",
+
+    technologies: [
+      "Kubernetes",
+      "Helm",
+      "Bitnami MySQL",
+      "Docker",
+      "YAML",
+      "Kubernetes Secrets",
+    ],
+
+    gallery: [
+      {
+        src: "/projects/tickeria-helm-chart/helm-structure.png",
+        alt: "Tickeria Helm chart directory structure",
+        caption:
+          "Helm chart structure containing templates, values, and the Bitnami MySQL dependency.",
+      },
+      {
+        src: "/projects/tickeria-helm-chart/helm-template.png",
+        alt: "Rendered Tickeria Kubernetes manifests",
+        caption:
+          "Rendered Kubernetes manifests generated from the Tickeria Helm Chart.",
+      },
+      {
+        src: "/projects/tickeria-helm-chart/kubernetes.png",
+        alt: "Tickeria workloads running on Kubernetes",
+        caption:
+          "Tickeria frontend, backend, and MySQL workloads running in the Kubernetes cluster.",
+      },
+    ],
+
+    architecture: {
+      image: "/projects/tickeria-helm-chart/architecture.png",
+      description:
+        "The Helm Chart packages the Tickeria frontend and backend deployments together with a Bitnami MySQL dependency. The backend communicates with MySQL through the ClusterIP service generated by the MySQL subchart, while MySQL runs as a StatefulSet with persistent storage. Database credentials are provided through Kubernetes Secrets and shared between the MySQL dependency and backend application.",
+    },
+
+    implementation: {
+      helmPackaging: {
+        title: "Helm Chart Packaging",
+        content:
+          "Packaged the Tickeria Kubernetes resources into a Helm Chart using templates and values-driven configuration. Deployment settings such as image repositories, tags, replica counts, resources, and database configuration can be customized through values.yaml.",
+        commands: [
+          "helm lint ./tickeria",
+          "helm template tickeria ./tickeria",
+          "helm upgrade --install tickeria ./tickeria",
+        ],
+      },
+
+      mysqlDependency: {
+        title: "Bitnami MySQL Dependency",
+        content:
+          "Integrated the Bitnami MySQL Helm Chart as a chart dependency instead of maintaining a custom MySQL StatefulSet. The dependency provides the MySQL StatefulSet, ClusterIP Service, headless Service, persistent storage, and database configuration.",
+        commands: [
+          "helm dependency update ./tickeria",
+          "helm dependency list ./tickeria",
+        ],
+      },
+
+      configuration: {
+        title: "Values-driven Configuration",
+        content:
+          "Centralized application and database configuration in values.yaml. The parent chart passes MySQL-specific configuration through the mysql values namespace while backend configuration references the same database settings.",
+        commands: [
+          "helm template tickeria ./tickeria",
+          "helm template tickeria ./tickeria | grep 'image:'",
+        ],
+      },
+
+      secrets: {
+        title: "Kubernetes Secret Management",
+        content:
+          "Moved database credentials from application configuration into Kubernetes Secrets. The same Secret is consumed by the Bitnami MySQL dependency and the backend through secretKeyRef, keeping database credentials out of Deployment manifests.",
+        commands: [
+          "kubectl get secret tickeria-db-secret",
+          "kubectl describe pod tickeria-mysql-0",
+        ],
+      },
+
+      databaseNetworking: {
+        title: "Database Service Discovery",
+        content:
+          "Configured the backend to communicate with MySQL through the Kubernetes ClusterIP Service instead of using a Pod IP. The backend connects to tickeria-mysql on port 3306, while the MySQL headless Service is used by the StatefulSet for pod identity.",
+        commands: [
+          "kubectl get svc",
+          "kubectl get endpoints tickeria-mysql",
+        ],
+      },
+
+      persistentStorage: {
+        title: "Persistent MySQL Storage",
+        content:
+          "Configured persistent storage for MySQL through the Bitnami MySQL dependency. The database runs as a StatefulSet with a persistent volume claim so database data can survive pod recreation.",
+        commands: [
+          "kubectl get pvc",
+          "kubectl get statefulset",
+        ],
+      },
+
+      validation: {
+        title: "Helm Validation and Dry Run",
+        content:
+          "Validated the generated Kubernetes resources before deployment using Helm linting, template rendering, and Kubernetes server-side dry-run validation.",
+        commands: [
+          "helm lint ./tickeria",
+          "helm template tickeria ./tickeria",
+          "helm template tickeria ./tickeria | kubectl apply --dry-run=server -f -",
+        ],
+      },
+    },
+
+    challenges: [
+      {
+        title: "Bitnami MySQL Image Availability",
+        problem:
+          "The Bitnami MySQL dependency rendered an image tag that was no longer available from the Docker registry, causing the MySQL pod to enter ImagePullBackOff.",
+        investigation:
+          "Inspected the generated StatefulSet using helm template and verified the exact image reference being used by both the MySQL container and its init container. The image was also tested directly using docker pull.",
+        rootCause:
+          "The Helm Chart dependency referenced a Bitnami MySQL image tag that was not available in the registry.",
+        solution:
+          "Investigated the dependency version and image configuration instead of modifying the generated dependency templates directly.",
+        result:
+          "The issue was isolated to the dependency image reference rather than Kubernetes networking or the application deployment.",
+        lessonLearned:
+          "Helm Chart versions and container image versions are separate concerns, and a chart's default image reference should still be verified against the current container registry.",
+      },
+
+      {
+        title: "Database Authentication Configuration",
+        problem:
+          "The backend could reach the MySQL Service but failed authentication with an error indicating that no password was being provided.",
+        investigation:
+          "Compared the environment variables used by the previous Kubernetes deployment with the variables generated by the Helm template.",
+        rootCause:
+          "The previous application configuration used DB_PASS while the initial Helm template provided DB_PASSWORD. The Go application still expected DB_PASS.",
+        solution:
+          "Aligned the Helm-generated environment variable with the environment variable expected by the backend application and sourced its value from the Kubernetes Secret.",
+        result:
+          "The backend was able to receive the database password through secretKeyRef while keeping the credential out of the ConfigMap.",
+        lessonLearned:
+          "When migrating an existing workload to Helm, the application's existing configuration contract must remain consistent with the generated Kubernetes environment variables.",
+      },
+    ],
+
+    metrics: [
+      {
+        value: "1",
+        label: "Reusable Helm Chart",
+      },
+      {
+        value: "1",
+        label: "Bitnami MySQL Dependency",
+      },
+      {
+        value: "StatefulSet",
+        label: "Persistent Database",
+      },
+      {
+        value: "GitOps Ready",
+        label: "Deployment Model",
+      },
+    ],
+
+    github: "https://github.com/RaflyAdiyasa/tickeria-chart",
+    demo: "",
+  },
+
+  {
     slug: "assigngo",
     title: "AssignGO",
     subtitle: "Application platform with cloud infrastructure and automated CI/CD",
@@ -450,36 +637,27 @@ export const projects = [
     },
 
     challenges: [
-      {
-        title: "Managing cloud infrastructure consistently",
-        problem:
-          "Manually configuring cloud resources makes environments harder to reproduce and maintain.",
-        investigation:
-          "Reviewed the infrastructure requirements and identified networking and managed database resources that needed to be provisioned consistently.",
-        rootCause:
-          "Infrastructure configuration was dependent on manual configuration and was not fully represented as code.",
-        solution:
-          "Used Terraform to define and provision the required cloud infrastructure.",
-        result:
-          "Infrastructure configuration became reproducible and easier to maintain.",
-        lessonLearned:
-          "Infrastructure as Code helps reduce configuration drift and makes infrastructure changes easier to review.",
-      },
-      {
-        title: "Automating application delivery",
-        problem:
-          "Manual application build and deployment increases repetitive operational work.",
-        investigation:
-          "Identified the build and deployment steps that could be automated whenever application changes were pushed.",
-        rootCause:
-          "The deployment workflow required manual execution of multiple steps.",
-        solution:
-          "Implemented a CI/CD workflow using Google Cloud Build.",
-        result:
-          "Application delivery became more consistent and automated.",
-        lessonLearned:
-          "Automating repetitive deployment tasks improves consistency and reduces manual errors.",
-      },
+      
+  {
+    title: "Managing frequent frontend changes on a deployed application",
+
+    problem:
+      "During development, the frontend team frequently changed the application code while the application was already deployed on Google Cloud. The frontend was required to run on a Compute Engine VM, making repeated manual deployment and environment setup time-consuming.",
+
+    investigation:
+      "Reviewed the existing deployment architecture and identified that the frontend VM and database environment required repeated configuration whenever changes needed to be deployed. The backend already used a managed deployment service with CI/CD, while the frontend deployment process remained largely manual.",
+
+    rootCause: "...",
+
+    solution:
+      "Used Terraform to provision the frontend Compute Engine VM and a dedicated SQL VM, together with an initialization script to automatically prepare the environment and deploy the frontend application. The SQL server was self-hosted on a VM to reduce infrastructure costs while keeping the application components within the same Google Cloud environment.",
+
+    result:
+      "Frontend infrastructure could be provisioned consistently through Terraform, significantly reducing repetitive manual VM setup and deployment work. The architecture also provided a more cost-conscious solution by running the SQL server on a dedicated VM instead of using a more expensive managed database service.",
+
+    lessonLearned:
+      "Learned how Infrastructure as Code can make cloud infrastructure reproducible and easier to maintain, especially when application changes require frequent redeployment. Also gained practical experience provisioning Compute Engine resources with Terraform, automating application deployment through VM startup scripts, and evaluating the trade-offs between managed cloud services and self-hosted infrastructure."
+  },
     ],
 
     metrics: [
@@ -673,38 +851,48 @@ export const projects = [
       },
     },
 
+     
     challenges: [
       {
-        title: "Running multiple services locally",
+        title: "Automating a multi-service development environment",
+
         problem:
-          "The application depends on multiple infrastructure services including MySQL, Redis, and MinIO.",
+          "The Helpdesk application depends on multiple infrastructure components, including MySQL, Redis, and MinIO, making the application difficult to run and configure consistently when each dependency is managed manually.",
+
         investigation:
-          "Identified the application and infrastructure dependencies that needed to run together during development.",
-        rootCause:
-          "Running each dependency manually made the development environment harder to reproduce.",
+          "Studied how each infrastructure component works and how the application interacts with MySQL, Redis, and MinIO. The monitoring stack also introduced additional components such as Prometheus, Grafana, Node Exporter, and Redis Exporter, requiring an understanding of their roles, configurations, and communication flow.",
+
         solution:
-          "Defined the application and supporting services using Docker Compose.",
+          "Containerized the application and its infrastructure dependencies using Docker Compose. Configuration files and required settings were mounted into containers through volumes, allowing services to initialize with their required configuration and reducing manual setup steps.",
+
         result:
-          "The complete development environment can be started consistently using Docker Compose.",
+          "The complete Helpdesk development and monitoring environment can be initialized from scratch using Docker Compose, including the application, database, cache, object storage, and monitoring components.",
+
         lessonLearned:
-          "Container orchestration with Docker Compose simplifies reproducible multi-service development environments.",
+          "Learned how multiple infrastructure components work together as a system rather than as isolated services. The project strengthened my understanding of MySQL, Redis, MinIO, Prometheus, Grafana, Node Exporter, and Redis Exporter, while demonstrating how Docker Compose can automate and make complex multi-service environments reproducible."
       },
+
       {
-        title: "Application visibility",
+        title: "Building a custom application monitoring dashboard",
+
         problem:
-          "Application and infrastructure issues are difficult to troubleshoot without metrics.",
+          "The initial Grafana dashboards were not well suited for monitoring the custom Go API. While existing templates worked for infrastructure components such as Node Exporter and Redis Exporter, they did not provide the application-specific visibility needed for the API.",
+
         investigation:
-          "Identified the need to monitor application infrastructure and Redis activity.",
-        rootCause:
-          "Important runtime metrics were not centralized in a monitoring dashboard.",
+          "Studied Prometheus metrics exposed by the Go application and learned PromQL to understand, filter, aggregate, and visualize application metrics. Identified the metrics that were most useful for understanding API behavior and runtime performance.",
+
         solution:
-          "Integrated Prometheus, Grafana, Node Exporter, and Redis Exporter.",
+          "Designed and built a custom Grafana dashboard specifically for the Go API using PromQL queries, while continuing to use existing dashboard templates for standard infrastructure metrics.",
+
         result:
-          "Runtime metrics became available for monitoring and troubleshooting.",
+          "The monitoring stack provides both infrastructure-level visibility through existing exporter dashboards and application-level visibility through a custom dashboard tailored to the Go API.",
+
         lessonLearned:
-          "Observability should be considered early when designing operationally maintainable applications.",
+          "Learned that effective observability is not only about collecting metrics, but also about presenting the right information for a specific system. This project strengthened my understanding of Prometheus metrics, PromQL, Grafana dashboards, and the difference between infrastructure monitoring and application observability."
       },
     ],
+
+
 
     metrics: [
       {
@@ -873,19 +1061,8 @@ export const projects = [
 
     challenges: [
       {
-        title: "Challenge Title",
-        problem:
-          "Description of the technical problem or challenge encountered.",
-        investigation:
-          "Steps taken to investigate and understand the problem.",
-        rootCause:
-          "Identified root cause of the problem.",
-        solution:
-          "Solution or approach used to resolve the problem.",
-        result:
-          "Outcome after implementing the solution.",
-        lessonLearned:
-          "Key technical lesson or insight gained from the challenge.",
+        title: "...",
+        problem: "...",
       },
 
       // Add more challenges if needed
@@ -1083,7 +1260,7 @@ export const projects = [
         result:
           "A multi-vendor ZTP workflow could be tested in the simulated environment.",
         lessonLearned:
-          "Automation workflows need to account for vendor-specific behavior when dealing with heterogeneous infrastructure.",
+          "Learned how ZTP and DHCP work together to provision network devices, how to interpret vendor-specific configuration syntax, and how data flows during the bootstrapping process. Also gained hands-on experience configuring network devices and routing, while troubleshooting connectivity issues across OSI Layers 1, 2, and 3.",
       },
     ],
 
@@ -1105,4 +1282,9 @@ export const projects = [
     github: "https://github.com/RaflyAdiyasa/",
     demo: "",
   },
+
+ 
+
+
+
 ];

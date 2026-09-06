@@ -8,7 +8,7 @@ import ProjectGallery from '../components/projects/ProjectGallery';
 import ProjectTechStack from '../components/projects/ProjectTechStack';
 import ProjectArchitecture from '../components/projects/ProjectArchitecture';
 // import ProjectImplementation from '../components/projects/ProjectImplementation';
-// import ProjectChallenges from '../components/projects/ProjectChallenges';
+import ProjectChallenges from '../components/projects/ProjectChallenges';
 // import ProjectMetrics from '../components/projects/ProjectMetrics';
 import ProjectLinks from '../components/projects/ProjectLinks';
 import ProjectDeployment from '../components/projects/ProjectDeployment';
@@ -101,9 +101,9 @@ export default function ProjectDetail() {
           <ProjectDeployment deployment={project.deployment} />
         )}
 
-        {/* {project.challenges && project.challenges.length > 0 && (
+        {project.challenges && project.challenges.length > 0 && (
           <ProjectChallenges challenges={project.challenges} />
-        )} */}
+        )}
 
         {/* {project.metrics && project.metrics.length > 0 && (
           <ProjectMetrics metrics={project.metrics} />
